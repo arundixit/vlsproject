@@ -1,0 +1,27 @@
+<h1>Listing attendence_statuses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @attendence_statuses.each do |attendence_status| %>
+      <tr>
+        <td><%= attendence_status.name %></td>
+        <td><%= link_to 'Show', attendence_status %></td>
+        <td><%= link_to 'Edit', edit_attendence_status_path(attendence_status) %></td>
+        <td><%= link_to 'Destroy', attendence_status, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Attendence status', new_attendence_status_path %>

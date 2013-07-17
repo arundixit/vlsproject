@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  employee_id: MyString
+  leave_type_id: MyString
+  count: 1
+
+two:
+  employee_id: MyString
+  leave_type_id: MyString
+  count: 1

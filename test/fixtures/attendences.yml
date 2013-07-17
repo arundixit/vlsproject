@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  employee_id: MyString
+  date_time: 2013-07-17 14:11:48
+  attendence_status_id: MyString
+  user_id: MyString
+
+two:
+  employee_id: MyString
+  date_time: 2013-07-17 14:11:48
+  attendence_status_id: MyString
+  user_id: MyString

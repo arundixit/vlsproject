@@ -1,0 +1,31 @@
+<h1>Listing leave_accounts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Leave type</th>
+      <th>Count</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @leave_accounts.each do |leave_account| %>
+      <tr>
+        <td><%= leave_account.employee_id %></td>
+        <td><%= leave_account.leave_type_id %></td>
+        <td><%= leave_account.count %></td>
+        <td><%= link_to 'Show', leave_account %></td>
+        <td><%= link_to 'Edit', edit_leave_account_path(leave_account) %></td>
+        <td><%= link_to 'Destroy', leave_account, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Leave account', new_leave_account_path %>
