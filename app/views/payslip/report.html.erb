@@ -1,0 +1,46 @@
+<h1>Payslip#report</h1>
+<p>Find me in app/views/payslip/report.html.erb</p>
+
+<% @employees.each do |employee| %>
+
+
+
+    <table border="1" cellpadding="1" cellspacing="1" style="">
+      <tbody>
+      <tr>
+        <td colspan="2"  style="background-color: #D6D6D6; width:500px">
+          <b>Employee Id- <%= employee.code %> <br/>
+         Name- <%= employee.name %> </b>
+
+        <br/>
+
+        Department -  <%= employee.department.name %> <br/>
+          Leave -  <%= employee.leave_accounts.count %> <br/>
+
+          Salary -  <%= employee.salary.amount %> <br/>
+          Shift -  <%= employee.shift.name %> <br/>
+          Shift -  <%= employee.shift.name %> <br/>
+          <%
+
+             total_month_days = Month.month_days;
+
+             if   employee.salary.amount>=0
+
+               if  employee.leave_accounts.count>=0
+
+               @x =   employee.salary.amount - (employee.salary.amount/total_month_days)*employee.leave_accounts.count  ;
+          %>
+
+
+          Net Salary -  <%= @x %> <br/>
+
+              <%end end %>
+          <!--% end %-->
+
+
+        </td>
+
+      </tr>
+
+        </table>
+<%end%>

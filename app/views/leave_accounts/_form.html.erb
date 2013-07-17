@@ -13,11 +13,13 @@
 
   <div class="field">
     <%= f.label :employee_id %><br>
-    <%= f.text_field :employee_id %>
+    <!--%= f.text_field :employee_id %-->
+    <%= collection_select(:leave_account, :employee_id, Employee.all, :id,  :name, {:prompt => false}) %>
   </div>
   <div class="field">
     <%= f.label :leave_type_id %><br>
-    <%= f.text_field :leave_type_id %>
+    <!--%= f.text_field :leave_type_id %-->
+    <%= collection_select(:leave_account, :leave_type_id, LeaveType.all, :id,  :name, {:prompt => false}) %>
   </div>
   <div class="field">
     <%= f.label :count %><br>

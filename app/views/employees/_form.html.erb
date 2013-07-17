@@ -21,11 +21,15 @@
   </div>
   <div class="field">
     <%= f.label :department_id %><br>
-    <%= f.text_field :department_id %>
+    <!--%= f.text_field :department_id %-->
+
+    <%= collection_select(:employee, :department_id, Department.all, :id, :name,{:prompt => false}) %>
   </div>
+
   <div class="field">
     <%= f.label :salary_id %><br>
-    <%= f.text_field :salary_id %>
+    <!--%= f.text_field :salary_id %-->
+    <%= collection_select(:employee, :salary_id, Salary.all, :id,  :name, {:prompt => false}) %>
   </div>
   <div class="field">
     <%= f.label :phone %><br>
@@ -53,7 +57,8 @@
   </div>
   <div class="field">
     <%= f.label :shift_id %><br>
-    <%= f.text_field :shift_id %>
+    <!--%= f.text_field :shift_id %-->
+    <%= collection_select(:employee, :shift_id, Shift.all, :id,  :name, {:prompt => false}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

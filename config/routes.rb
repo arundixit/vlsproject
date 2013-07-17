@@ -1,4 +1,5 @@
 Vlsmanagement::Application.routes.draw do
+  get "payslip/report"
   get "home/index"
   resources :attendence_statuses
 
@@ -70,4 +71,5 @@ Vlsmanagement::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
+  root 'home#index'
 end

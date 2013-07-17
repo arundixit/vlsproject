@@ -13,7 +13,8 @@
 
   <div class="field">
     <%= f.label :employee_id %><br>
-    <%= f.text_field :employee_id %>
+    <!--%= f.text_field :employee_id %-->
+    <%= collection_select(:attendence, :employee_id, Employee.all, :id,  :name, {:prompt => false}) %>
   </div>
   <div class="field">
     <%= f.label :date_time %><br>
@@ -21,7 +22,8 @@
   </div>
   <div class="field">
     <%= f.label :attendence_status_id %><br>
-    <%= f.text_field :attendence_status_id %>
+    <!--%= f.text_field :attendence_status_id %-->
+    <%= collection_select(:attendence, :attendence_status_id, AttendenceStatus.all, :id,  :name, {:prompt => false}) %>
   </div>
   <div class="field">
     <%= f.label :user_id %><br>
