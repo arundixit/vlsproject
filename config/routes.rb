@@ -1,5 +1,8 @@
 Vlsmanagement::Application.routes.draw do
-  get "payslip/report"
+  resources :payslipreports
+
+  devise_for :users
+
   get "home/index"
   resources :attendence_statuses
 

@@ -1,3 +1,14 @@
+<link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+<script>
+    $(function() {
+        $( "#dateofjoining" ).datepicker();
+
+    });
+</script>
+
 <%= form_for(@employee) do |f| %>
   <% if @employee.errors.any? %>
     <div id="error_explanation">
@@ -53,7 +64,7 @@
   </div>
   <div class="field">
     <%= f.label :date_of_joining %><br>
-    <%= f.text_field :date_of_joining %>
+    <%= f.text_field :date_of_joining, :id=> "dateofjoining" %>
   </div>
   <div class="field">
     <%= f.label :shift_id %><br>
