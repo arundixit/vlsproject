@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,19 +9,39 @@
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
+
 </head>
-<body> <center><%= render "home/menu"   %>
-  <p class="navbar-text pull-right">
-  <% if user_signed_in? %>
-      Logged in as <strong><%= current_user.email %></strong>.
-      <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-  <% else %>
-      <%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-  <% end %>
- </center>
+
+
+<body>
+<div class="art-sheet clearfix">
+  <div class="art-layout-wrapper">
+    <div class="art-content-layout">
+      <div class="art-content-layout-row">
+
+        <%= render "common/header"%>
+
+<nav class="art-nav">
+  <!--div class="art-nav-inner">
+    <ul class="art-hmenu"><li><!--%= link_to 'Employee', employees_path %><ul class="active"><li><a href="home/new-page.html">Subpage 1</a></li><li><a href="home/new-page-2.html">Subpage 2</a></li><li><a href="home/new-page-3.html">Subpage 3</a></li></ul></li><li><%= link_to 'Department', departments_path %></li></ul>
+    <ul class="art-hmenu"><li><!--%= link_to 'Leave Account', leave_accounts_path %></li><li><!--%= link_to 'Leave type', leave_types_path %></li><li><%= link_to 'Attendence status', attendence_statuses_path %></li><li>  <%= link_to 'Attendence', attendences_path %> </li><li><%= link_to 'Salary', salaries_path %> </li>
+
+      <li><!--%= link_to 'Shift', shifts_path %> </li><li><!--%= link_to 'Payslip Report', payslipreports_path %></li></ul> </div-->
+
+
+</nav><p class="navbar-text pull-right">
+
+    <br/>
 <%= yield %>
 
+
+
+      </div>
+    </div>
+  </div>
+</div>
+
 </body>
+
+
 </html>

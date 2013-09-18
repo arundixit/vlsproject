@@ -13,6 +13,8 @@ class EmployeesController < ApplicationController
   def show
 
     @employee = Employee.find(params[:id])
+
+
   end
 
   # GET /employees/new

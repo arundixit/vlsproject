@@ -1,9 +1,12 @@
 Vlsmanagement::Application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   resources :payslipreports
 
   devise_for :users
 
   get "home/index"
+  post 'payslipreports/report'
+  post 'payslipreports/menu'
   resources :attendence_statuses
 
   resources :attendences

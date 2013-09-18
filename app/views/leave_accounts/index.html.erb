@@ -1,4 +1,9 @@
-<h1>Listing leave_accounts</h1>
+<div class="art-nav-inner">
+
+  <ul class="art-hmenu"><li><%= link_to 'Leave Account', leave_accounts_path %></li><li><%= link_to 'Leave type', leave_types_path %></li><li><%= link_to 'Attendence status', attendence_statuses_path %></li><li>  <%= link_to 'Attendence', attendences_path %> </li>
+
+    <li><%= link_to 'Payslip Report', payslipreports_path %></li></ul> </div></br>   </br>
+<h1>Leave Accounts</h1>
 
 <table>
   <thead>
@@ -15,8 +20,8 @@
   <tbody>
     <% @leave_accounts.each do |leave_account| %>
       <tr>
-        <td><%= leave_account.employee_id %></td>
-        <td><%= leave_account.leave_type_id %></td>
+        <td><%= leave_account.employee.name %></td>
+        <td><%= leave_account.leave_type.name %></td>
         <td><%= leave_account.count %></td>
         <td><%= link_to 'Show', leave_account %></td>
         <td><%= link_to 'Edit', edit_leave_account_path(leave_account) %></td>

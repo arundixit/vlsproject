@@ -1,11 +1,17 @@
-<h1>Listing salaries</h1>
+<h1>Employees Salary</h1>
 
 <table>
   <thead>
     <tr>
       <th>Name</th>
-      <th>Amount</th>
+      <th>Advance Amount</th>
       <th>Description</th>
+      <th>Basic Salary </th>
+      <th>Dearness Allowance </th>
+      <th>House Rent Allowance  </th>
+      <th>Medical Allowance   </th>
+      <th>Conveyance Allowance    </th>
+      <th>Mobile Allowance    </th>
       <th></th>
       <th></th>
       <th></th>
@@ -18,6 +24,15 @@
         <td><%= salary.name %></td>
         <td><%= salary.amount %></td>
         <td><%= salary.description %></td>
+        <td> <%= salary.basic_salary %> </td>
+
+        <td> <%= salary.dearness_allowance %> </td>
+        <td> <%= salary.house_rent_allowance %> </td>
+        <td> <%= salary.medical_allowance %> </td>
+
+        <td> <%= salary.conveyance_allowance %> </td>
+        <td> <%= salary.mobile_allowance %> </td>
+
         <td><%= link_to 'Show', salary %></td>
         <td><%= link_to 'Edit', edit_salary_path(salary) %></td>
         <td><%= link_to 'Destroy', salary, method: :delete, data: { confirm: 'Are you sure?' } %></td>

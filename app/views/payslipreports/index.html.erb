@@ -1,27 +1,8 @@
+<div class="art-nav-inner">
 
+  <ul class="art-hmenu"><li><%= link_to 'Leave Account', leave_accounts_path %></li><li><%= link_to 'Leave type', leave_types_path %></li><li><%= link_to 'Attendence status', attendence_statuses_path %></li><li>  <%= link_to 'Attendence', attendences_path %> </li>
 
-<table>
-  <thead>
-    <tr>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @payslipreports.each do |payslipreport| %>
-      <tr>
-        <td><%= link_to 'Show', payslipreport %></td>
-        <td><%= link_to 'Edit', edit_payslipreport_path(payslipreport) %></td>
-        <td><%= link_to 'Destroy', payslipreport, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-
-    <% end %>
-  </tbody>
-</table>
-
-
+    <li><%= link_to 'Payslip Report', payslipreports_path %></li></ul> </div></br>   </br>
 <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
@@ -31,78 +12,61 @@
         $( "#fromdatepicker" ).datepicker();
         $( "#todatepicker" ).datepicker();
     });
-</script>  <center>   <h1>Payslip Report</h1>
-  <div style="border: 2px solid;width: 30%;text-align: center">
+</script>
 
-    <%= form_tag payslipreports_path, :method => 'get' do %>
+
+
+<center>   <h1>Payslip Report</h1>  <br/>
+  <div style="border: 2px solid;width: 30%;text-align: center">
+    <%= form_tag(:controller => "payslipreports", :action => "report", :condition => params[:condition]) do %>
+
+
         <table>
           <tr> <td>
             <!--%= f.text_field :employee_id %-->
-            Please Select Employee</td><td><%= collection_select(:employee, :employee_id, Employee.all, :id,  :name, {:prompt => false}) %>
+            Payslip for Month</td><td>
+            <%= select_tag :month, options_for_select(Payslipreport::MONTHS)  %>
+
+
+
+
+
+
+            <%= select_year(Date.today, :start_year => Time.now.year, :end_year => Time.now.year - 8 , :field_name => :grad_year, :prefix => :profile) %>
+            <!--%=  select_tag "month", options_for_select((1..12).map {|m| [Date::MONTHNAMES[m], m]}) %-->
+             </td></tr>
+          <tr> <td>
+            <!--%= f.text_field :employee_id %-->
+            Please Select Employee</td><td> <%= select_tag "id",options_for_select(Employee.all.collect {|employee| [ employee.name, employee.id ] })  %>
+
+
+            <!--%= collection_select(:employee, :employee_id, Employee.all, :id,  :name, {:prompt => false}) %-->
           </td></tr>
           <tr> <td>
-            <br>
+
 
             <!--%= f.text_field :employee_id %-->
-            From Date</td><td ><%= text_field_tag :fromdatepicker %>
+           <!-- From Date</td><td ><!--%= text_field_tag :fromdatepicker %-->
           </td></tr>
           <tr> <td>
-            <br>
+
             <!--%= f.text_field :employee_id %-->
-            To Date</td><td><%= text_field_tag  :todatepicker %>
+            <!--To Date</td><td><!--%= text_field_tag  :todatepicker %-->
           </td></tr>
+
+
+
+
+
           <tr> <td>
-            <br>  </td><td>
+             </td><td>
             <!--%= f.text_field :employee_id %-->
             <%= submit_tag("Go")%>
           </td></tr>
         </table>
     <%end%>
   </div>
-  <% @employees.each do |employee| %>
 
-
-
-
-      <table border="1" cellpadding="1" cellspacing="1" style="">
-        <tbody>
-        <tr>
-          <td colspan="2"  style="background-color: #D6D6D6; width:500px">
-            <b>Employee Id- <%= employee.code %> <br/>
-              Name- <%= employee.name %> </b>
-
-            <br/>
-
-            Department -  <%= employee.department.name %> <br/>
-            Leave -  <%= employee.leave_accounts.count %> <br/>
-
-            Salary -  <%= employee.salary.amount %> <br/>
-            Shift -  <%= employee.shift.name %> <br/>
-
-            <%
-
-               total_month_days = Time.days_in_month(1)
-
-               if   employee.salary.amount>=0
-
-                 if  employee.leave_accounts.count>=0
-
-                   @x =   employee.salary.amount - (employee.salary.amount/total_month_days)*employee.leave_accounts.count  ;
-            %>
-
-                    <%= total_month_days %>  <br/>
-                    Net Salary -  <%= @x %> <br/>
-
-                <%end end %>
-            <!--% end %-->
-
-
-          </td>
-
-        </tr>
-
-      </table>
-  <%end%>
 </center>
 <br>
 

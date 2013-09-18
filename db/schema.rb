@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130719164158) do
+ActiveRecord::Schema.define(version: 20130904121146) do
 
   create_table "attendence_statuses", force: true do |t|
     t.string   "name"
@@ -70,12 +70,36 @@ ActiveRecord::Schema.define(version: 20130719164158) do
     t.datetime "updated_at"
   end
 
+  create_table "rails_admin_histories", force: true do |t|
+    t.text     "message"
+    t.string   "username"
+    t.integer  "item"
+    t.string   "table"
+    t.integer  "month",      limit: 2
+    t.integer  "year",       limit: 5
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rails_admin_histories", ["item", "table", "month", "year"], name: "index_rails_admin_histories"
+
   create_table "salaries", force: true do |t|
     t.string   "name"
     t.integer  "amount"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "basic_salary"
+    t.string   "dearness_allowance"
+    t.string   "house_rent_allowance"
+    t.string   "medical_allowance"
+    t.string   "conveyance_allowance"
+    t.string   "mobile_allowance"
+    t.string   "provident_fund"
+    t.string   "esi"
+    t.string   "loan"
+    t.string   "profession_tax"
+    t.string   "tsd_it"
   end
 
   create_table "shifts", force: true do |t|
@@ -99,6 +123,7 @@ ActiveRecord::Schema.define(version: 20130719164158) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true

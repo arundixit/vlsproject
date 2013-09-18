@@ -6,13 +6,30 @@ class PayslipreportsController < ApplicationController
   def index
     @payslipreports = Payslipreport.all
     @employees=Employee.all
-    fromdatepicker = params[:fromdatepicker]
-    puts"fromdatepicker"
+
+       # @vehicles = Vehicle.where("category_id IN (#{params[:category_ids]})")
+
+      #(VehicleCategory.where("vehicle_id = #{vehicle.id}").where(" category_id IN (#{condition_var}0)").collect(&:id).count == 1) || ( params[:category_ids]==nil) %-->
+
+
   end
+
+     def menu
+       @user = User.find_by_email(params[:email])
+     end
+
+  def report
+    @payslipreports = Payslipreport.all
+      @employee= Employee.find(params[:id])
+    end
+
+
 
   # GET /payslipreports/1
   # GET /payslipreports/1.json
   def show
+
+
   end
 
   # GET /payslipreports/new

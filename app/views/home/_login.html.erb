@@ -1,0 +1,25 @@
+<% if user_signed_in? %>
+    Logged in as <strong><%= current_user.email %></strong>.
+    <%= link_to 'Edit profile', edit_user_registration_path, :class => 'navbar-link' %> |
+    <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
+<% else %>
+    <!--%= link_to "Sign up", new_user_registration_path, :class => 'navbar-link'  %-->
+
+    <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
+
+
+<% end %>
+<div style="border:1px solid;width:300px ;">
+  <%= form_tag(:controller => "payslipreports", :action => "menu", :condition => params[:condition]) do %>
+
+
+      <table>
+        <tr> <td>
+          Email <%= text_field_tag 'email' %>
+        </td></tr><tr><td>
+        Password  <%= password_field_tag 'password' %>
+        <%= submit_tag("Login")%>
+      </td></tr>
+      </table>
+  <% end %>
+</div>
